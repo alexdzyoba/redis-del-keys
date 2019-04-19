@@ -1,6 +1,10 @@
 redis-del-keys
 ==============
 
+[![Release](https://img.shields.io/github/release/alexdzyoba/redis-del-keys.svg?style=flat-square)](https://github.com/alexdzyoba/redis-del-keys/releases/latest)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Travis](https://img.shields.io/travis/alexdzyoba/redis-del-keys.svg?style=flat-square)](https://travis-ci.org/alexdzyoba/redis-del-keys)
+
 Delete keys in Redis by a pattern. Deletion is performed by doing [`SCAN`][scan]
 and then invoking DEL in a [pipeline]. This allows you to delete the keys in a
 non-blocking manner.
