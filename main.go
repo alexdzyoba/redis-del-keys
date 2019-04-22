@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/go-redis/redis"
+	"github.com/pkg/errors"
 	"github.com/spf13/pflag"
 )
 
@@ -13,7 +13,7 @@ import (
 func exec(pipe redis.Pipeliner) {
 	_, err := pipe.Exec()
 	if err != nil {
-		log.Println(err)
+		errors.Wrap(err, "pipeline exec failed")
 	}
 }
 
@@ -64,7 +64,7 @@ func main() {
 		// Grab the next portion of keys
 		keys, cursor, err = redisdb.Scan(cursor, pattern, count).Result()
 		if err != nil {
-			log.Println(err)
+			errors.Wrap(err, "scan failed")
 			break
 		}
 
